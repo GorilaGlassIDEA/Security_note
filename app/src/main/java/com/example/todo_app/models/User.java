@@ -10,6 +10,8 @@ public class User {
     public long creationDate;
     public String description;
 
+    public User(){}
+
     public User(String name, String email,  String description, long creationDate) {
         this.name = name;
         this.email = email;

@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.todo_app.MainActivity;
+import com.example.todo_app.activities.MainActivity;
 import com.example.todo_app.R;
 import com.example.todo_app.services.AuthService;
 import com.google.android.gms.tasks.OnFailureListener;

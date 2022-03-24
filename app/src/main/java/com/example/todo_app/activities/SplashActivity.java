@@ -1,10 +1,11 @@
-package com.example.todo_app;
+package com.example.todo_app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.todo_app.R;
 import com.example.todo_app.auth.CreateUserActivity;
 import com.example.todo_app.services.AuthService;
 

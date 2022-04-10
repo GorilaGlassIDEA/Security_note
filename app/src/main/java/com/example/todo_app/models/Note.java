@@ -1,8 +1,10 @@
 package com.example.todo_app.models;
 
-public class Note {
+import java.io.Serializable;
+
+public class Note implements Serializable {
     public String title;
-    private final String description; // nullable
+    private String description; // nullable
     public String timeCreated;
     public boolean isChecked;
 
@@ -13,7 +15,6 @@ public class Note {
 //        this.isChecked = isChecked;
 //    }
     public Note() {
-        description  = "";
     }
 
     public Note(String title, String description, String timeCreated, boolean isChecked) {

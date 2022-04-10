@@ -2,31 +2,30 @@ package com.example.todo_app.models;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Random;
+import java.util.UUID;
 
-public class User {
-    public String name;
+public class User implements Serializable {
+    public String password;
     public String email;
-    public long creationDate;
-    public String description;
+    public String id;
 
     public User(){}
 
-    public User(String name, String email,  String description, long creationDate) {
-        this.name = name;
+    public User(String password, String email) {
+        this.password = password;
         this.email = email;
-        this.creationDate =creationDate;
-        this.description = description;
+        id = UUID.randomUUID().toString();
     }
 
-    @NonNull
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", creationDate=" + creationDate +
-                ", description='" + description + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 }

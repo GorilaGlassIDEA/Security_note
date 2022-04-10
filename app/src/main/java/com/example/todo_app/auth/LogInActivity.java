@@ -12,12 +12,19 @@ import android.widget.Toast;
 
 import com.example.todo_app.activities.MainActivity;
 import com.example.todo_app.R;
+import com.example.todo_app.models.User;
 import com.example.todo_app.services.AuthService;
+import com.example.todo_app.services.GetFirebaseUser;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class LogInActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class LogInActivity extends AppCompatActivity implements Serializable{
     Button goToCreateUser;
     Button logInButton;
     EditText passwordText;
@@ -36,12 +43,18 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
+//        Intent intent = new Intent(getBaseContext(),MainActivity.class);
+//        intent.putExtra(GetFirebaseUser.str());
+
+
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //1. set value
                 String email = emailText.getText().toString();
                 String password = passwordText.getText().toString();
+
+
                 //2. check value
                 if (email.isEmpty()) {
                     showMassage("Email is empty");
@@ -66,7 +79,13 @@ public class LogInActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                startActivity(new Intent(getBaseContext(), MainActivity.class));
+                                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://todo-app-15dcb-default-rtdb.europe-west1.firebasedatabase.app");
+//                                DatabaseReference ref = firebaseDatabase.getReference().child(password);
+//                                ref.setValue(password);
+////                                intent.putExtra("PASS", password);
+//                                intent.putExtra("PASS", (Serializable)  GetFirebaseUser.str(password));
+                                startActivity(intent);
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override

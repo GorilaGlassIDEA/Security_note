@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.example.todo_app.R;
 import com.example.todo_app.models.Note;
+import com.example.todo_app.models.User;
+import com.example.todo_app.services.AuthService;
+import com.example.todo_app.services.DatabaseService;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -32,9 +35,6 @@ public class NoteActivity extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_note);
         linkedViews();
 
-
-
-
         createNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,13 +54,14 @@ public class NoteActivity extends AppCompatActivity implements Serializable {
                     Toast.makeText(getBaseContext(), "isEmpty", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Intent i  = new Intent(getBaseContext(), MainActivity.class);
+                i.putExtra("NOTE", (Serializable) note);
 
-                //Firebase data
-                FirebaseDatabase db = FirebaseDatabase.getInstance("https://todo-app-15dcb-default-rtdb.europe-west1.firebasedatabase.app");
-                DatabaseReference ref = db.getReference().child("Note data");
-                ref.setValue(note);
-                finish();
-                startActivity(new Intent(getBaseContext(), MainActivity.class));
+
+
+
+
+                startActivity(i);
             }
         });
     }

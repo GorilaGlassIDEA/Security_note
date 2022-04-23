@@ -1,49 +1,25 @@
 package com.example.todo_app.models;
 
-import java.io.Serializable;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class Note implements Serializable {
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+public class Note {
     public String title;
-    private String description; // nullable
-    public String timeCreated;
-    public boolean isChecked;
+    public String description;
+    public String date;
+    //default constructor
+    public Note(){}
 
-    //    public Note(String title, String description, Date timeCreated, boolean isChecked) {
-//        this.title = title;
-//        this.description = description;
-//        this.timeCreated = timeCreated.getHours() + ":" + timeCreated.getMinutes();
-//        this.isChecked = isChecked;
-//    }
-    public Note() {
-    }
-
-    public Note(String title, String description, String timeCreated, boolean isChecked) {
+    public Note(String title, String description, String date) {
         this.title = title;
         this.description = description;
-        this.timeCreated = timeCreated;
-        this.isChecked = isChecked;
+        this.date = date;
+
     }
-
-//    public Note(String title, Date timeCreated, boolean isChecked) {
-//        this.title = title;
-//        this.timeCreated = timeCreated.getHours() + ":" + timeCreated.getMinutes();
-//        this.description = null;
-//        this.isChecked = isChecked;
-//    }
-
-
-    public String getDescription() {
-        if (description == null) {
-            return "";
-        } else {
-            return description;
-        }
-    }
-
-//    public String getCreatedTime() {
-//        int h = timeCreated.getHours();
-//        int m = timeCreated.getMinutes();
-//
-//        return h + ":" + m;
-//    }
 }

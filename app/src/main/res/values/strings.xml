@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TODO-APP</string>
+    <string name="show">Show</string>
+    <string name="delete">Delete</string>
+    <string name="title">Title</string>
+    <string name="short_title">Short Title</string>
+    <string name="title_short">Title Short</string>
+    <string name="edit">edit</string>
 </resources>

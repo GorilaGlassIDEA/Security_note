@@ -6,45 +6,53 @@
     android:layout_height="match_parent"
     android:paddingBottom="16dp">
 
-    <EditText
-        android:id="@+id/nameNoteEditText"
-        android:layout_width="238dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        android:text="dsfsf"
+    <Button
+        android:id="@+id/createNoteButton"
+        android:layout_width="120dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="create note"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewOff"
+        app:layout_constraintEnd_toEndOf="@+id/viewOff" />
+
+    <View
+        android:id="@+id/viewOff"
+        android:layout_width="370dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/rectangle_design"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/CreateNoteButton"
-        android:layout_width="120dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:text="create note"
-        app:layout_constraintBottom_toBottomOf="@+id/nameNoteEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/nameNoteEditText"
-        app:layout_constraintTop_toTopOf="@+id/nameNoteEditText"
-        app:layout_constraintVertical_bias="1.0" />
+    <EditText
+        android:id="@+id/titleEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/title_short"
+        android:inputType="textPersonName"
+        android:text="sdfs"
+        android:textColor="@color/brown_black"
+        app:layout_constraintStart_toStartOf="@+id/viewOff"
+        app:layout_constraintTop_toTopOf="@+id/viewOff" />
 
     <EditText
-        android:id="@+id/textEditText"
-        android:layout_width="372dp"
+        android:id="@+id/descriptionEditText"
+        android:layout_width="339dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Text Here"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
         android:inputType="textMultiLine"
-        android:text="sdfsd"
-        app:layout_constraintEnd_toEndOf="@+id/CreateNoteButton"
-        app:layout_constraintStart_toStartOf="@+id/nameNoteEditText"
-        app:layout_constraintTop_toBottomOf="@+id/nameNoteEditText" />
+        android:maxLines="7"
+        android:scrollbars="vertical"
+        android:text="[fq"
+        android:textColor="@color/brown_black"
+        app:layout_constraintStart_toStartOf="@+id/viewOff"
+        app:layout_constraintTop_toTopOf="@+id/viewOff" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

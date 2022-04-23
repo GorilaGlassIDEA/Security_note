@@ -22,10 +22,10 @@ public class SplashActivity extends AppCompatActivity {
 
         if (AuthService.isCreateUser()){
             Toast.makeText(this,"checked pas and email", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, LogInActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
 
         }else {
-            startActivity(new Intent(this, CreateUserActivity.class));
+            startActivity(new Intent(this, LogInActivity.class));
         }
 
 

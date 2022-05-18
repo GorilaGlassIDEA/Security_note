@@ -5,7 +5,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AuthService {
-
     public static Task<AuthResult> logIn(String email, String password) {
         return FirebaseAuth.getInstance()
                 .signInWithEmailAndPassword(email, password);

@@ -16,37 +16,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/showButton"
-        android:layout_width="86dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="290dp"
-        android:layout_marginTop="-55dp"
-        android:text="@string/edit"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/white"
-        app:cornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
-
     <TextView
         android:id="@+id/descriptionTextView"
-        android:layout_width="306dp"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
         android:paddingEnd="50dp"
         android:paddingBottom="50dp"
         android:text="dsfsdfsdfasdfsd"
         android:textColor="@color/brown_black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="183dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
         android:layout_marginTop="4dp"
         android:text="@string/short_title"
@@ -69,5 +55,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="53dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/white"
+        android:paddingRight="8dp"
+        app:cornerRadius="20dp"
+        app:icon="@drawable/ic_outline_delete_24"
+
+        app:iconGravity="textStart"
+        app:iconPadding="10dp"
+        app:iconTint="@color/brown_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewOn" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="53dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/white"
+        android:paddingRight="8dp"
+        app:cornerRadius="20dp"
+        app:icon="@drawable/ic_outline_edit_24"
+        app:iconGravity="textStart"
+        app:iconPadding="10dp"
+        app:iconTint="@color/brown_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewOn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

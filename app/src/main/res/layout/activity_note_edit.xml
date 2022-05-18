@@ -12,7 +12,22 @@
         android:layout_height="59dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
-        android:text="create note"
+        android:backgroundTint="@color/white"
+        android:text="edit"
+        android:textColor="@color/brown_black"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewOff"
+        app:layout_constraintEnd_toEndOf="@+id/viewOff" />
+
+    <Button
+        android:id="@+id/deleteNoteButton"
+        android:layout_width="120dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/white"
+        android:text="delete"
+        android:textColor="@color/brown_black"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewOff"
         app:layout_constraintEnd_toEndOf="@+id/viewOff" />

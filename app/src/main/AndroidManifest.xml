@@ -4,13 +4,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/icon_app"
+        android:label="Security note"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TODOAPP">
         <activity
-            android:name=".activities.SplashActivity"
+            android:name=".activities.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,17 +18,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<!--        <activity-->
+<!--            android:name=".activities.auth.CreateUserActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
         <activity
-            android:name=".auth.CreateUserActivity"
+            android:name=".activities.auth.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".auth.LogInActivity"
+            android:name=".activities.main.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.main.NoteActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.NoteActivity"
+            android:name=".activities.main.ExtendsNoteActivity"
             android:exported="false" />
     </application>
 

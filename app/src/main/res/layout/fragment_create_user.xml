@@ -15,15 +15,16 @@
             android:id="@+id/buttonCreateUserCREATE_USER"
             android:layout_width="wrap_content"
             android:layout_height="58dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="100dp"
             android:backgroundTint="@color/white"
             android:text="Go"
             android:textColor="@color/brown_black"
             app:cornerRadius="20dp"
             app:icon="@drawable/ic_baseline_arrow_forward_24"
             app:iconTint="@color/brown_black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/buttonLoginCREATE_USER" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/loginTextView"
@@ -34,11 +35,36 @@
             android:text="Create user"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/EditTextPasswordCREATE_USER"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="@+id/EditTextEmailCREATE_USER"
+            app:layout_constraintStart_toStartOf="@+id/EditTextEmailCREATE_USER"
+            app:layout_constraintTop_toBottomOf="@+id/EditTextEmailCREATE_USER" />
+
+        <Button
+            android:id="@+id/buttonLoginCREATE_USER"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="100dp"
+            android:backgroundTint="@color/white"
+            android:text="login"
+            android:textColor="@color/brown_black"
+            app:cornerRadius="20dp"
+            app:icon="@drawable/ic_baseline_arrow_back_24"
+            app:iconTint="@color/brown_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/EditTextEmailCREATE_USER"
@@ -48,38 +74,8 @@
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="@+id/loginTextView"
-            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="@+id/loginTextView"
             app:layout_constraintTop_toBottomOf="@+id/loginTextView" />
-
-        <EditText
-            android:id="@+id/EditTextPasswordCREATE_USER"
-            android:layout_width="250dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="4dp"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="@+id/EditTextEmailCREATE_USER"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/EditTextEmailCREATE_USER"
-            app:layout_constraintTop_toBottomOf="@+id/EditTextEmailCREATE_USER" />
-
-        <Button
-            android:id="@+id/buttonLoginCREATE_USER"
-            android:layout_width="wrap_content"
-            android:layout_height="58dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="140dp"
-            android:backgroundTint="@color/white"
-            android:text="login"
-            android:textColor="@color/brown_black"
-            app:cornerRadius="20dp"
-            app:icon="@drawable/ic_baseline_arrow_back_24"
-            app:iconTint="@color/brown_black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/EditTextPasswordCREATE_USER" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TODOAPP">
+
+
         <activity
-            android:name=".activities.splash.SplashActivity"
+            android:name=".activities.splash.PresentSplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,10 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity-->
-<!--            android:name=".activities.auth.CreateUserActivity"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
+        <!--        <activity-->
+        <!--            android:name=".activities.auth.CreateUserActivity"-->
+        <!--            android:exported="false" />-->
+        <!--        <activity-->
         <activity
             android:name=".activities.auth.RegisterActivity"
             android:exported="false" />

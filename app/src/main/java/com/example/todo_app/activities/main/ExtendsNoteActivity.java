@@ -21,7 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 public class ExtendsNoteActivity extends NoteActivity {
@@ -36,9 +38,8 @@ public class ExtendsNoteActivity extends NoteActivity {
 
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://todo-app-15dcb-default-rtdb.europe-west1.firebasedatabase.app");
-        String massage = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        DatabaseReference databaseReference = firebaseDatabase.getReference();
-        Query lastQuery = databaseReference.child(massage).orderByKey().limitToLast(1);
+        DatabaseReference ref = firebaseDatabase.getReference(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("note");
+        Query lastQuery = ref.orderByKey().limitToLast(1);
 
 
         lastQuery.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -60,30 +61,24 @@ public class ExtendsNoteActivity extends NoteActivity {
         });
         createNoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
-
-                Date currentDate = new Date();
-                DateFormat dateFormat = new SimpleDateFormat("dd.MM", Locale.getDefault());
-                String dateText = dateFormat.format(currentDate);
                 note = new Note(
                         titleEditText.getText().toString(),
-                        descriptionEditText.getText().toString(),
-                        dateText
+                        descriptionEditText.getText().toString()
                 );
                 //check text - isEmpty?
                 if (titleEditText.getText().toString().isEmpty()) {
-                    Toast.makeText(getBaseContext(), "isEmpty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Name note - empty!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (descriptionEditText.getText().toString().isEmpty()) {
-                    Toast.makeText(getBaseContext(), "isEmpty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Description - empty!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Intent i = new Intent(getBaseContext(), MainActivity.class);
                 //note = new Note(titleEditText.getText().toString(),  descriptionEditText.getText().toString(),  new Date().getHours() + ":" + new Date().getMinutes());
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://todo-app-15dcb-default-rtdb.europe-west1.firebasedatabase.app");
-                DatabaseReference ref = firebaseDatabase.getReference(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).push();
+                DatabaseReference ref = firebaseDatabase.getReference(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("note").push();
                 ref.setValue(note);
                 startActivity(i);
             }
@@ -96,8 +91,8 @@ public class ExtendsNoteActivity extends NoteActivity {
                 startActivity(new Intent(getBaseContext(), MainActivity.class));
             }
         });
-    }
 
+    }
     private void linkedViews() {
         createNoteButton = findViewById(R.id.createNoteButton);
         titleEditText = findViewById(R.id.titleEditText);
@@ -108,6 +103,7 @@ public class ExtendsNoteActivity extends NoteActivity {
     public void removeValue(String id) {
         FirebaseDatabase.getInstance("https://todo-app-15dcb-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("note")
                 .child(id)
                 .removeValue();
     }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp">
+
+    <View
+        android:id="@+id/viewOn"
+        android:layout_width="396dp"
+        android:layout_height="0dp"
+        android:background="@drawable/rectangle_design"
+        android:backgroundTint="@color/brown_black"
+        app:layout_constraintBottom_toBottomOf="@+id/titleTextViewRecover"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleTextViewRecover"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="10dp"
+        android:paddingBottom="20dp"
+        android:text="123123"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/recoverButtonRecover"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginTop="-55dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:paddingRight="8dp"
+        android:text="recover"
+        android:textColor="@color/brown_black"
+        app:cornerRadius="20dp"
+        app:icon="@drawable/ic_outline_cloud_download_24"
+        app:iconGravity="textStart"
+        app:iconPadding="10dp"
+        app:iconTint="@color/brown_black"
+        app:layout_constraintEnd_toEndOf="@+id/viewOn"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextViewRecover" />
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:text="delete: 20.02"
+        android:textColor="@color/brown_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewOn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

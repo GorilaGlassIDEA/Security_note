@@ -14,12 +14,13 @@ public class Note implements IdModel {
     public Note() {
     }
 
-    public Note(String title, String description, String date) {
+    public Note(String title, String description) {
+        // add/edit
         this.title = title;
         this.description = description;
-        this.date = date;
 
     }
+
 
     @Override
     public String getId() {

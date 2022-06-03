@@ -15,10 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.todo_app.R;
-import com.example.todo_app.activities.auth.CreateUserActivity;
 import com.example.todo_app.activities.auth.RegisterActivity;
 import com.example.todo_app.activities.main.MainActivity;
-import com.example.todo_app.fragments.main.HomeFragment;
 import com.example.todo_app.services.AuthService;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,7 +31,7 @@ public class LogInFragment extends Fragment {
 //    CreateUserFragment createUserFragment = new CreateUserFragment();
     View view;
 
-    LogInFragment(){}
+    public LogInFragment(){}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,10 +44,10 @@ public class LogInFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_login, container, false);
         context = view.getContext();
         //Links
-        goToCreateUser = view.findViewById(R.id.buttonLoginCREATE_USER);
-        logInButton = view.findViewById(R.id.buttonCreateUserCREATE_USER);
-        passwordText = view.findViewById(R.id.EditTextPasswordCREATE_USER);
-        emailText = view.findViewById(R.id.EditTextEmailCREATE_USER);
+        goToCreateUser = view.findViewById(R.id.goToCreateUser);
+        logInButton = view.findViewById(R.id.logInButton);
+        passwordText = view.findViewById(R.id.EditTextPasswordLOG_IN);
+        emailText = view.findViewById(R.id.editTextEmailLOG_IN);
 
         goToCreateUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,19 +66,22 @@ public class LogInFragment extends Fragment {
 
                 //2. check value
                 if (email.isEmpty()) {
-                    showMassage("Email is empty");
-                    return;
-                }
-                if (!email.contains("@") || email.length() < 3) {
-                    showMassage("Email must be correct");
+                    showMassage("Email is empty!");
                     return;
                 }
                 if (password.isEmpty()) {
-                    showMassage("Password is empty");
+                    showMassage("Password is empty!");
                     return;
                 }
+
+                if (email.length() <= 6){
+                    showMassage("The email is too simple!");
+                }
+                if (!email.contains("@")){
+                    showMassage("mail is not correct");
+                }
                 if (password.length() < 6) {
-                    showMassage("Password must be correct");
+                    showMassage("The password must contain at least 6 characters!");
                     return;
                 }
 

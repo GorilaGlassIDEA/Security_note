@@ -1,6 +1,5 @@
 package com.example.todo_app.fragments.register;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,16 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.todo_app.R;
-import com.example.todo_app.activities.auth.LogInActivity;
 import com.example.todo_app.activities.auth.RegisterActivity;
 import com.example.todo_app.activities.main.MainActivity;
 import com.example.todo_app.fragments.main.HomeFragment;
@@ -32,6 +28,7 @@ public class CreateUserFragment extends Fragment {
     Button logInButton;
     EditText passwordText;
     EditText emailText;
+    String allName;
 
 
 
@@ -68,19 +65,22 @@ public class CreateUserFragment extends Fragment {
                 String password = passwordText.getText().toString();
                 //2. check value
                 if (email.isEmpty()) {
-                    showMassage("Email is empty");
-                    return;
-                }
-                if (!email.contains("@") || email.length() < 3) {
-                    showMassage("Email must be correct");
+                    showMassage("Email is empty!");
                     return;
                 }
                 if (password.isEmpty()) {
-                    showMassage("Password is empty");
+                    showMassage("Password is empty!");
                     return;
                 }
+
+                if (email.length() <= 6){
+                    showMassage("The email is too simple!");
+                }
+                if (!email.contains("@")){
+                    showMassage("mail is not correct");
+                }
                 if (password.length() < 6) {
-                    showMassage("Password must be correct");
+                    showMassage("The password must contain at least 6 characters!");
                     return;
                 }
 

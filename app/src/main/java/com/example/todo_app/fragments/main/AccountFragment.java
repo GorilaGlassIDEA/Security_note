@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -60,27 +61,15 @@ public class AccountFragment extends Fragment {
         email.setText("Email: "+FirebaseAuth.getInstance().getCurrentUser().getEmail());
         viewGender.setBackgroundResource(R.drawable.icon_woman);
         int[] images = {R.drawable.icon_woman, R.drawable.icon_man,R.drawable.icon_man3,R.drawable.icon_woman2};
-        new Thread(new Runnable() {
-            public void run() {
-                // TODO Auto-generated method stub
-                while (true) {
-                    try {
-                        Thread.sleep(1000);
-                        mHandler.post(new Runnable() {
 
-                            public void run() {
-                                // TODO Auto-generated method stub
-                                // Write your code here to update the UI.
-                                Random ran = new Random();
-                                viewGender.setBackgroundResource(images[ran.nextInt(images.length)]);
-                            }
-                        });
-                    } catch (Exception e) {
-                        // TODO: handle exception
-                    }
-                }
+        Toast.makeText(view.getContext(), "Click avatar!", Toast.LENGTH_SHORT).show();
+        viewGender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Random ran = new Random();
+                viewGender.setBackgroundResource(images[ran.nextInt(images.length)]);
             }
-        }).start();
+        });
 
 
         ExitButton.setOnClickListener(new View.OnClickListener() {

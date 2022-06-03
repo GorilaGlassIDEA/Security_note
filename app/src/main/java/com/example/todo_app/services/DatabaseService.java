@@ -15,8 +15,16 @@ public class DatabaseService {
 
     }
 
-    public static FirebaseRecyclerOptions<Note> getUserOptions() {
-        Query query = getDatabase().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid());
+    public static FirebaseRecyclerOptions<Note> getUserOptionsAdd() {
+        Query query = getDatabase().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("note");
+        ClassSnapshotParser<Note> parser = new ClassSnapshotParserWithID(Note.class);
+
+        return new FirebaseRecyclerOptions.Builder<Note>()
+                .setQuery(query, parser)
+                .build();
+    }
+    public static FirebaseRecyclerOptions<Note> getUserOptionsRecover() {
+        Query query = getDatabase().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("archive");
         ClassSnapshotParser<Note> parser = new ClassSnapshotParserWithID(Note.class);
 
         return new FirebaseRecyclerOptions.Builder<Note>()

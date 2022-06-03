@@ -45,15 +45,9 @@ public class NoteActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
             @Override
             public void onClick(View view) {
-
-
-                Date currentDate = new Date();
-                DateFormat dateFormat = new SimpleDateFormat("dd.MM", Locale.getDefault());
-                String dateText = dateFormat.format(currentDate);
                 note = new Note(
                         titleEditText.getText().toString(),
-                        descriptionEditText.getText().toString(),
-                        dateText
+                        descriptionEditText.getText().toString()
                 );
                 //check text - isEmpty?
                 if (titleEditText.getText().toString().isEmpty()) {
@@ -68,7 +62,7 @@ public class NoteActivity extends AppCompatActivity {
                 Intent i = new Intent(getBaseContext(), MainActivity.class);
                 //note = new Note(titleEditText.getText().toString(),  descriptionEditText.getText().toString(),  new Date().getHours() + ":" + new Date().getMinutes());
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://todo-app-15dcb-default-rtdb.europe-west1.firebasedatabase.app");
-                DatabaseReference ref = firebaseDatabase.getReference(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).push();
+                DatabaseReference ref = firebaseDatabase.getReference(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("note").push();
                 ref.setValue(note);
                 startActivity(i);
             }

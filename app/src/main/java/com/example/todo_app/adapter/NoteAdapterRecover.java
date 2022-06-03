@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,12 +18,14 @@ import com.example.todo_app.models.Note;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.Serializable;
+import java.util.Objects;
 
-public class UpdateNoteAdapter extends FirebaseRecyclerAdapter<Note, UpdateNoteAdapter.NoteViewHolder> implements Serializable {
-    public UpdateNoteAdapter(@NonNull FirebaseRecyclerOptions<Note> options) {
+public class NoteAdapterRecover extends FirebaseRecyclerAdapter<Note, NoteAdapterRecover.NoteViewHolder> implements Serializable {
+    public NoteAdapterRecover(@NonNull FirebaseRecyclerOptions<Note> options) {
         super(options);
     }
 
@@ -34,62 +37,51 @@ public class UpdateNoteAdapter extends FirebaseRecyclerAdapter<Note, UpdateNoteA
     @NonNull
     @Override
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_disign_note, parent, false);
-        Context context = parent.getContext();
-        return new UpdateNoteAdapter.NoteViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_disign_note_recover, parent, false);
+        return new NoteAdapterRecover.NoteViewHolder(view);
     }
 
 
-    class NoteViewHolder extends RecyclerView.ViewHolder implements Serializable {
+    class NoteViewHolder extends RecyclerView.ViewHolder {
 
-        Button deleteButton;
-        Button editButton;
-        TextView dateTextView;
+        Button recoverButton;
         TextView titleTextView;
-        TextView descriptionTextView;
+        TextView dateTextView;
 
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
-            deleteButton = itemView.findViewById(R.id.deleteButton);
+            recoverButton = itemView.findViewById(R.id.recoverButtonRecover);
+            titleTextView = itemView.findViewById(R.id.titleTextViewRecover);
             dateTextView = itemView.findViewById(R.id.dateTextView);
-            titleTextView = itemView.findViewById(R.id.titleTextView);
-            descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
-            editButton = itemView.findViewById(R.id.editButton);
         }
 
         public void bind(Note note) {
             titleTextView.setText(note.title);
-            descriptionTextView.setText(note.description);
             dateTextView.setText(note.date);
-
-            deleteButton.setOnClickListener(new View.OnClickListener() {
+            recoverButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    removeValue(note);
-                }
-            });
-            editButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    removeValue(note);
+                    Toast.makeText(v.getContext(), "Recover note!", Toast.LENGTH_SHORT).show();
                     createValue(note);
-                    Intent i  = new Intent(v.getContext(), ExtendsNoteActivity.class);
-                    v.getContext().startActivity(i);
+                    removeValue(note);
                 }
             });
+        }
+
+
+        public void createValue(Note note) {
+            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://todo-app-15dcb-default-rtdb.europe-west1.firebasedatabase.app");
+            DatabaseReference ref = firebaseDatabase.getReference(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("note").push();
+            ref.setValue(note);
         }
         public void removeValue(Note note){
             FirebaseDatabase.getInstance("https://todo-app-15dcb-default-rtdb.europe-west1.firebasedatabase.app")
                     .getReference(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .child("archive")
                     .child(note.getId())
                     .removeValue();
         }
-        public void createValue(Note note){
-            FirebaseDatabase.getInstance("https://todo-app-15dcb-default-rtdb.europe-west1.firebasedatabase.app")
-                    .getReference(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                    .push()
-                    .setValue(note);
-        }
     }
 }
+

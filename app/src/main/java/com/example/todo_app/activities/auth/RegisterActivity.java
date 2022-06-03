@@ -4,29 +4,24 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.todo_app.R;
-import com.example.todo_app.fragments.main.AccountFragment;
-import com.example.todo_app.fragments.main.HomeFragment;
 
-import com.example.todo_app.fragments.register.CreateUserFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.todo_app.fragments.register.LogInFragment;
 
-    public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
-        CreateUserFragment userFragment = new CreateUserFragment();
+        LogInFragment logInFragment = new LogInFragment();
         @SuppressLint("NotifyDataSetChanged")
         @Override
-
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_register);
 
-        openFragment(userFragment);
+        openFragment(logInFragment);
 
     }
     @Override

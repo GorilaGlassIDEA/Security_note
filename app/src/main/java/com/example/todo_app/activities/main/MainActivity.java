@@ -79,13 +79,6 @@ public class MainActivity extends AppCompatActivity {
        transaction.addToBackStack(null);
        transaction.commit();
     }
-//    public void animFragment_RL(Fragment fragment){
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.setCustomAnimations(R.anim.enter_anim_rl, R.anim.exit_anim_rl);
-//        transaction.replace(R.id.frameLatout, fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
     public void overrideAnim(Intent intent){
         startActivity(intent);
         overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);

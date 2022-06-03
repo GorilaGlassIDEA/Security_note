@@ -33,9 +33,6 @@
         <activity
             android:name=".activities.main.NoteActivity"
             android:exported="false" />
-        <activity
-            android:name=".activities.main.ExtendsNoteActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

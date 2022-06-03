@@ -16,13 +16,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.todo_app.R;
-import com.example.todo_app.activities.auth.LogInActivity;
 import com.example.todo_app.activities.auth.RegisterActivity;
 import com.example.todo_app.activities.main.MainActivity;
 import com.example.todo_app.services.AuthService;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Date;
 import java.util.Random;
 
 public class AccountFragment extends Fragment {
